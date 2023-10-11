@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Reminder Website</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+<body>
+    <h1>Create a New Reminder</h1>
+    <form action="/add" method="POST">
+        <div>
+            <label for="date">Select a Date:</label>
+            <input type="date" name="date" id="date" required>
+        </div>
+
+        <div>
+            <label for="subject">Subject:</label>
+            <select name="subject" id="subject" required>
+                <option value="Meeting">Meeting</option>
+                <option value="Deadline">Deadline</option>
+                <option value="Appointment">Appointment</option>
+                <!-- Add more options as needed -->
+            </select>
+        </div>
+
+        <div>
+            <label for="description">Add Description:</label>
+            <textarea name="description" id="description" rows="4" required></textarea>
+        </div>
+
+        <div>
+            <label for="email">Email Address:</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+
+        <div>
+            <label for="contactNo">Contact No:</label>
+            <input type="tel" name="contactNo" id="contactNo" required>
+        </div>
+
+        <div>
+            <label for="smsNo">SMS No:</label>
+            <input type="tel" name="smsNo" id="smsNo" required>
+        </div>
+
+        <div>
+            <label>Recur for next:</label>
+            <input type="checkbox" name="recur7Days" value="7Days">7 Days
+            <input type="checkbox" name="recur5Days" value="5Days">5 Days
+            <input type="checkbox" name="recur3Days" value="3Days">3 Days
+            <input type="checkbox" name="recur2Days" value="2Days">2 Days
+        </div>
+
+        <button type="submit">Set Reminder</button>
+    </form>
+
+    <ul>
+        <% reminders.forEach(function(reminder) { %>
+            <li>
+                Date: <%= reminder.date %><br>
+                    Subject: <%= reminder.subject %><br>
+                        Description: <%= reminder.description %><br>
+                            Email: <%= reminder.email %><br>
+                                Contact No: <%= reminder.contactNo %><br>
+                                    SMS No: <%= reminder.smsNo %><br>
+                                        Recurrence: <%= reminder.recurrenceOptions.join(', ') %>
+          </li>
+        <% }); %>
+      </ul>
+      
+</body>
+
+</html>

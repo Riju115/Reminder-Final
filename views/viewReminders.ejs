@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>View Reminders</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+<body>
+    <h1>View Your Reminders</h1>
+    <!-- Filter Form -->
+    <form action="/view" method="GET">
+        <!-- Add fields for filtering reminders, such as "From Date," "To Date," and "Subject" -->
+        <!-- Users can choose filtering options to view specific reminders -->
+        <button type="submit">Filter Reminders</button>
+    </form>
+
+    <!-- List of filtered reminders -->
+    <ul>
+        <!-- Loop through filtered reminders and display them as needed -->
+        <% reminders.forEach(function(reminder) { %>
+            <li>
+                Date: <%= reminder.date %><br>
+                    Subject: <%= reminder.subject %><br>
+                        Description: <%= reminder.description %><br>
+                            Email: <%= reminder.email %><br>
+                                Contact No: <%= reminder.contactNo %><br>
+                                    SMS No: <%= reminder.smsNo %><br>
+                                        Recurrence: <%= reminder.recurrenceOptions.join(', ') %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>

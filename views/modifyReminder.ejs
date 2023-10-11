@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Modify Reminder</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+<body>
+    <h1>Modify Reminder</h1>
+    <!-- Modify Reminder Form -->
+    <form action="/modify" method="POST">
+        <!-- Fields to modify reminder data -->
+        <!-- Include fields for date, subject, description, email, contactNo, smsNo, and recurrenceOptions -->
+        <!-- You can pre-populate these fields with existing data -->
+        <!-- For example, if you have a list of reminders, loop through them and populate the fields -->
+        <button type="submit">Update Reminder</button>
+    </form>
+
+    <!-- List of reminders -->
+    <ul>
+        <!-- Loop through reminders and display them as needed -->
+        <% reminders.forEach(function(reminder) { %>
+            <li>
+                Date: <%= reminder.date %><br>
+                    Subject: <%= reminder.subject %><br>
+                        Description: <%= reminder.description %><br>
+                            Email: <%= reminder.email %><br>
+                                Contact No: <%= reminder.contactNo %><br>
+                                    SMS No: <%= reminder.smsNo %><br>
+                                        Recurrence: <%= reminder.recurrenceOptions.join(', ') %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>

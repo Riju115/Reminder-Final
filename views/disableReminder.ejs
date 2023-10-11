@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Disable Reminder</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+<body>
+    <h1>Disable Reminder</h1>
+    <!-- Disable Reminder Form -->
+    <form action="/disable" method="POST">
+        <!-- List of reminders to choose from to disable -->
+        <label for="reminderId">Select a Reminder to Disable:</label>
+        <select name="reminderId" id="reminderId" required>
+            <% reminders.forEach(function(reminder) { %>
+                <option value="<%= reminder._id %>">
+                    <%= reminder.subject %>
+                </option>
+                <% }); %>
+        </select>
+        <button type="submit">Disable Reminder</button>
+    </form>
+
+    <!-- List of reminders -->
+    <ul>
+        <!-- Loop through reminders and display them as needed -->
+        <% reminders.forEach(function(reminder) { %>
+            <li>
+                Date: <%= reminder.date %><br>
+                    Subject: <%= reminder.subject %><br>
+                        Description: <%= reminder.description %><br>

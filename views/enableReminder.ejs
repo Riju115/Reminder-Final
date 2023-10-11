@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Enable Reminder</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+
+<body>
+    <h1>Enable Reminder</h1>
+    <!-- Enable Reminder Form -->
+    <form action="/enable" method="POST">
+        <!-- List of reminders to choose from to enable -->
+        <label for="reminderId">Select a Reminder to Enable:</label>
+        <select name="reminderId" id="reminderId" required>
+            <% reminders.forEach(function(reminder) { %>
+                <option value="<%= reminder._id %>">
+                    <%= reminder.subject %>
+                </option>
+                <% }); %>
+        </select>
+        <button type="submit">Enable Reminder</button>
+    </form>
+
+    <!-- List of reminders -->
+    <ul>
+        <!-- Loop through reminders and display them as needed -->
+        <% reminders.forEach(function(reminder) { %>
+            <li>
+                Date: <%= reminder.date %><br>
+                    Subject: <%= reminder.subject %><br>
+                        Description: <%= reminder.description %><br>
+                            Email: <%= reminder.email %><br>
+                                Contact No: <%= reminder.contactNo %><br>
+                                    SMS No: <%= reminder.smsNo %><br>
+                                        Recurrence: <%= reminder.recurrenceOptions.join(', ') %>
+            </li>
+        <% }); %>
+    </ul>
+</body>
+
+</html>
